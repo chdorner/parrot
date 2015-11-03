@@ -9,6 +9,27 @@
 
 Parrot is a small HTTP server that replies with the URL path you call it with.
 
+## Installation
+
+If you already have Go >= 1.5 installed and set up your GOPATH:
+
+```bash
+$ go get -u github.com/chdorner/parrot
+$ $GOPATH/bin/parrot -version
+```
+
+You can find binary distributions in the
+[releases](https://github.com/chdorner/parrot/releases), install them like:
+
+```bash
+$ wget https://github.com/chdorner/parrot/releases/download/v0.1.0/parrot-0.1.0_amd64_linux
+$ mv parrot-0.1.0_amd64_linux /usr/local/bin/parrot
+$ parrot -version
+```
+
+Note that you might have to replace the download URL depending on your
+operating system.
+
 ## Usage
 
 ```bash
