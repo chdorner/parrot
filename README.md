@@ -24,6 +24,7 @@ You can find binary distributions in the
 ```bash
 $ wget https://github.com/chdorner/parrot/releases/download/v0.1.0/parrot-0.1.0_amd64_linux
 $ mv parrot-0.1.0_amd64_linux /usr/local/bin/parrot
+$ chmod +x /usr/local/bin/parrot
 $ parrot -version
 ```
 
