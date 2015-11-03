@@ -37,3 +37,25 @@ $ curl http://localhost:4242/_/402.json
 $ curl http://localhost:4242/_/505.xml
 <status><code>418</code><text>I&#39;m a teapot</text></status>
 ```
+
+## Notes on development
+
+I'm using the new Go 1.5 vendor experiment, so Go 1.5 is required for building
+parrot. Make sure `GO15VENDOREXPERIMENT=1` is set in your environment, or let
+the `make` handle this for you. I'm also using
+[gvt](https://github.com/FiloSottile/gvt) for handling the
+fetching of the vendored packages.
+
+```bash
+# Get all dependencies
+$ make deps
+
+# Run the tests
+$ make test
+
+# Build from source
+$ make
+
+# Run
+$ bin/parrot
+```
