@@ -26,4 +26,14 @@ $ curl http://localhost:4242/i-am-a-parrot.json
 # it knows about xml
 $ curl http://localhost:4242/i-am-a-parrot.xml
 <parrot><url>/i-am-a-parrot.xml</url></parrot>
+
+# it can also reply with http response codes to special requests
+$ curl http://localhost:4242/_/201
+201 - Created
+
+$ curl http://localhost:4242/_/402.json
+{"code":402,"text":"Payment Required"}
+
+$ curl http://localhost:4242/_/505.xml
+<status><code>418</code><text>I&#39;m a teapot</text></status>
 ```
