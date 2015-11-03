@@ -1,0 +1,16 @@
+sudo: false
+language: go
+
+env:
+  - GO15VENDOREXPERIMENT=1
+
+go:
+  - 1.5
+
+install:
+  - go get -u github.com/FiloSottile/gvt
+  - make deps
+  - make
+
+script:
+  - make test

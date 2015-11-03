@@ -1,4 +1,4 @@
-# parrot
+# parrot [![Build Status](https://travis-ci.org/chdorner/parrot.svg)](https://travis-ci.org/chdorner/parrot)
 
     Parrot: Dexter's a cookie!
     Dexter: I am not a cookie!
