@@ -1,0 +1,12 @@
+{
+	"version": 0,
+	"dependencies": [
+		{
+			"importpath": "github.com/stretchr/testify/assert",
+			"repository": "https://github.com/stretchr/testify",
+			"revision": "0d5a14c5a477957864f3b747d95255ad4e34bcc0",
+			"branch": "master",
+			"path": "/assert"
+		}
+	]
+}
