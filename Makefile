@@ -1,4 +1,4 @@
-VERSION := 0.1.0
+VERSION := 0.2.0
 VENDORENV := GO15VENDOREXPERIMENT=1
 LDFLAGS := -ldflags \
 	"-X main.Version=$(VERSION)"
