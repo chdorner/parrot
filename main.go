@@ -8,7 +8,9 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"os/signal"
 	"strings"
+	"syscall"
 	"time"
 )
 
@@ -45,6 +47,10 @@ func init() {
 }
 
 func main() {
+	sigch := make(chan os.Signal)
+	go handleSignals(sigch)
+	signal.Notify(sigch)
+
 	if *version {
 		fmt.Println(Version)
 		os.Exit(0)
@@ -59,6 +65,15 @@ func main() {
 
 	log.Println("Parrot server listening on", *addr)
 	http.ListenAndServe(*addr, nil)
+}
+
+func handleSignals(sigch chan os.Signal) {
+	for sig := range sigch {
+		switch sig {
+		case syscall.SIGTERM, syscall.SIGINT:
+			os.Exit(0)
+		}
+	}
 }
 
 func parrotHandler(w http.ResponseWriter, r *http.Request) {
