@@ -64,7 +64,10 @@ func main() {
 	}
 
 	log.Println("Parrot server listening on", *addr)
-	http.ListenAndServe(*addr, nil)
+	err := http.ListenAndServe(*addr, nil)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func handleSignals(sigch chan os.Signal) {
