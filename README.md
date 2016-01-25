@@ -60,6 +60,18 @@ $ curl http://localhost:4242/_/505.xml
 <status><code>418</code><text>I&#39;m a teapot</text></status>
 ```
 
+### Use it as a static file server
+
+```bash
+# start the server
+$ parrot -a :4242 -dir . &
+
+# it returns file contents as HTML
+$ curl http://localhost:4242/todo.txt
+* Research parrots
+* Research pet stores in the area
+```
+
 ## Notes on development
 
 I'm using the new Go 1.5 vendor experiment, so Go 1.5 is required for building

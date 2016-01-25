@@ -16,8 +16,9 @@ import (
 var (
 	Version = "bleeding-edge"
 
-	version = flag.Bool("version", false, "print version and exit")
-	addr    = flag.String("a", ":4242", "Address to bind to")
+	version   = flag.Bool("version", false, "print version and exit")
+	addr      = flag.String("a", ":4242", "Address to bind to")
+	directory = flag.String("dir", "", "Serve a local directory (disables other features)")
 )
 
 func init() {
@@ -37,14 +38,18 @@ func main() {
 		os.Exit(0)
 	}
 
-	http.Handle("/", &server.ParrotHandler{})
-	for _, s := range server.Statuses {
-		pattern := fmt.Sprintf("/_/%d", s)
-		h := &server.StatusHandler{s}
+	if *directory == "" {
+		http.Handle("/", &server.ParrotHandler{})
+		for _, s := range server.Statuses {
+			pattern := fmt.Sprintf("/_/%d", s)
+			h := &server.StatusHandler{s}
 
-		http.Handle(pattern, h)
-		http.Handle(fmt.Sprintf("%s.json", pattern), h)
-		http.Handle(fmt.Sprintf("%s.xml", pattern), h)
+			http.Handle(pattern, h)
+			http.Handle(fmt.Sprintf("%s.json", pattern), h)
+			http.Handle(fmt.Sprintf("%s.xml", pattern), h)
+		}
+	} else {
+		http.Handle("/", http.FileServer(http.Dir(*directory)))
 	}
 
 	log.Println("Parrot server listening on", *addr)
